@@ -20,22 +20,54 @@ int lcm(int a, int b) { return (a * b) / gcd(a, b); }
 // 03 Hash Set
 bool duplicate(vector<int>& nums)
 {
-   unordered_set<int> st; //  arbitrary order // we can do using map<int, int> mp; (key , val with frequency check, but it will take nlogn time)
+        unordered_set<int> st; 
+        for(auto num : nums)
+        {
+            st.insert(num);
+        }
+        
+        long long sum = 0;
+        for(auto it: st)
+        {
+            sum += it;
+        }
 
-   for(int i = 0; i < nums.size(); i++)
-   {
-      if(st.count(nums[i])) // st.count(nums) is available or not.
-      {
-         return true;
-      }
-      else
-      {
-        st.insert(nums[i]);
-      }
-   }
-   
-   return false;
+        long long sumarr = 0;
+        for(int i = 0; i < nums.size(); i++)
+        {
+            sumarr += nums[i];
+        }
+        
+        if(sum != sumarr)
+        {
+            return true; // duplicate
+        }
+        else
+        {
+            return false; // not duplicate
+        }
+
 }
+
+// // 03 Hash Set
+// bool duplicate(vector<int>& nums)
+// {
+//    unordered_set<int> st; //  arbitrary order // we can do using map<int, int> mp; (key , val with frequency check, but it will take nlogn time)
+
+//    for(int i = 0; i < nums.size(); i++)
+//    {
+//       if(st.count(nums[i])) // st.count(nums) is available or not.
+//       {
+//          return true;
+//       }
+//       else
+//       {
+//         st.insert(nums[i]);
+//       }
+//    }
+   
+//    return false;
+// }
 
 // Time complexity: 0(n)
 // space complexity: 0(n)

@@ -16,44 +16,24 @@ using namespace std;
 int gcd(int a, int b) { if(a % b == 0) return b; else return gcd(b, a % b); }
 int lcm(int a, int b) { return (a * b) / gcd(a, b); }
 
-// bool duplicate(vector<int>& nums)
-// {
-//     const int mx = 100001;
-//     vector<bool> arr(mx, false);  // make all value initially zero/false
 
-//     for(int i = 0; i < nums.size(); i++)
-//     {
-//         if(arr[nums[i]])
-//         {
-//             return true;
-//         }
-//         arr[nums[i]] = true;
-
-//     }
-
-//     return false;
-// }
-
-
-//Sorting approach
+// 03 Hash Set Length
 bool duplicate(vector<int>& nums)
 {
-    sort(nums.begin(), nums.end());
-
-    for(int i = 1; i < nums.size(); i++)
+    unordered_set< int > st;  //unordered set contain duplicate without sorting so just 0(n)
+    st.insert(nums.begin(), nums.end()); //insertion Time	O(1) average
+    
+    if(st.size() != nums.size())
     {
-       if(nums[i] == nums[i-1])
-       {
-          return true;
-       }
+        return true;
     }
-
     return false;
+
+
 }
 
-//Time complexity: 0(nlogn)
-//space complexity: O(1) or O(n) depending on the sorting algorithm.
- 
+// Time complexity: 0(n)
+// space complexity: 0(n)
  
 void shakil_sol() 
 {
